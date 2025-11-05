@@ -108,6 +108,10 @@ function initLiveMarketData() {
   const canvas = document.getElementById('marketChart');
   if (!canvas) return;
 
+  // Set fixed canvas size to prevent resizing
+  canvas.width = 800;
+  canvas.height = 300;
+
   // Simulate real-time data
   const ctx = canvas.getContext('2d');
 
@@ -121,19 +125,33 @@ function initLiveMarketData() {
         borderColor: '#A6E22E',
         backgroundColor: 'rgba(166, 226, 46, 0.1)',
         tension: 0.4,
-        fill: true
+        fill: true,
+        pointRadius: 0,
+        pointHoverRadius: 0
       }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 2.5,
-      animation: {
-        duration: 0
+      responsive: false,
+      maintainAspectRatio: false,
+      animation: false,
+      animations: {
+        tension: {
+          duration: 0
+        }
+      },
+      transitions: {
+        active: {
+          animation: {
+            duration: 0
+          }
+        }
       },
       plugins: {
         legend: {
           display: false
+        },
+        tooltip: {
+          enabled: false
         }
       },
       scales: {
@@ -158,7 +176,7 @@ function initLiveMarketData() {
     }
   });
 
-  // Update live data every 5 seconds (simulation)
+  // Update live data every 5 seconds (simulation) - only numbers, not chart
   setInterval(() => {
     updateLiveStats();
   }, 5000);

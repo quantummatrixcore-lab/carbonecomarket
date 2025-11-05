@@ -589,8 +589,9 @@ ul { list-style: none; }
   padding: 1rem;
   border-radius: 8px;
   max-width: 100%;
-  width: 100%;
-  height: auto !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Climate Agreements */
