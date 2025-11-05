@@ -39,10 +39,17 @@ function initMiniCalculator() {
 
   calculateBtn.addEventListener('click', function() {
     const electricity = parseFloat(document.getElementById('quickElectricity')?.value) || 0;
+
+    if (electricity === 0) {
+      alert(getCurrentLang() === 'tr' ? 'Lütfen elektrik tüketiminizi girin' : 'Please enter your electricity consumption');
+      return;
+    }
+
     const result = (electricity * 0.5).toFixed(2); // Simple calculation: kWh * 0.5 kg CO2
 
     const resultDiv = document.getElementById('quickResult');
     if (resultDiv) {
+      resultDiv.style.display = 'block';
       resultDiv.innerHTML = `
         <strong>${result} kg CO₂</strong>
         <p style="font-size: 0.875rem; margin-top: 0.5rem;">
