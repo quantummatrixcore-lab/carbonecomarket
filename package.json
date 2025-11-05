@@ -1,0 +1,21 @@
+{
+  "name": "carbonecomarket",
+  "version": "1.0.0",
+  "description": "Global Carbon Marketplace - Bilingual TR/EN",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quantummatrixcore-lab/carbonecomarket.git"
+  },
+  "keywords": [
+    "carbon",
+    "marketplace",
+    "sustainability",
+    "carbon-credits"
+  ],
+  "author": "CarbonEcoMarket Team",
+  "license": "MIT"
+}
