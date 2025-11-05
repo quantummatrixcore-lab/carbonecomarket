@@ -25,6 +25,16 @@
   box-sizing: border-box;
 }
 
+/* DISABLE ALL ANIMATIONS AND TRANSITIONS - Prevent layout shifts */
+*,
+*::before,
+*::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--slate-dark);

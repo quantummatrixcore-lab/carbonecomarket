@@ -102,30 +102,15 @@ function initCarbonCalculator() {
 }
 
 // ============================================
-// Live Market Data with Chart.js
+// Live Market Data - DISABLED
 // ============================================
 function initLiveMarketData() {
-  // Chart disabled to prevent layout issues
-  // Only update live stats numbers
-  setInterval(() => {
-    updateLiveStats();
-  }, 5000);
+  // ALL UPDATES DISABLED to prevent any layout shifts
+  // Page is now completely static
 }
 
 function updateLiveStats() {
-  // Simulate live updates
-  const currentPrice = document.getElementById('currentPrice');
-  const tradingVolume = document.getElementById('tradingVolume');
-
-  if (currentPrice) {
-    const price = (85 + Math.random() * 15).toFixed(2);
-    currentPrice.textContent = `€${price}`;
-  }
-
-  if (tradingVolume) {
-    const volume = (Math.random() * 5 + 45).toFixed(1);
-    tradingVolume.textContent = `${volume}M`;
-  }
+  // DISABLED - no auto-updates to prevent flickering
 }
 
 // ============================================
@@ -153,46 +138,22 @@ function initFAQ() {
 }
 
 // ============================================
-// Counter Animation for Statistics
+// Counter Animation - DISABLED
 // ============================================
 function initCounterAnimation() {
+  // Counter animation DISABLED to prevent layout shifts
+  // Numbers are now static (shown directly in HTML)
   const counters = document.querySelectorAll('.stat-number');
-
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        animateCounter(counter);
-        observer.unobserve(counter);
-      }
-    });
-  }, observerOptions);
-
   counters.forEach(counter => {
-    observer.observe(counter);
+    const target = parseInt(counter.getAttribute('data-target'));
+    if (target) {
+      counter.textContent = formatNumber(target);
+    }
   });
 }
 
 function animateCounter(element) {
-  const target = parseInt(element.getAttribute('data-target'));
-  const duration = 2000; // 2 seconds
-  const increment = target / (duration / 16); // 60 FPS
-  let current = 0;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = formatNumber(target);
-      clearInterval(timer);
-    } else {
-      element.textContent = formatNumber(Math.floor(current));
-    }
-  }, 16);
+  // DISABLED - no animation
 }
 
 function formatNumber(num) {
@@ -205,28 +166,11 @@ function formatNumber(num) {
 }
 
 // ============================================
-// Scroll Animations
+// Scroll Animations - DISABLED
 // ============================================
 function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.user-card, .package-card, .step-card, .news-card, .team-card');
-
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  animatedElements.forEach(element => {
-    observer.observe(element);
-  });
+  // Scroll animations DISABLED to prevent layout shifts
+  // All elements are now visible immediately (no fade-in)
 }
 
 // ============================================
