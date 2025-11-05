@@ -35,6 +35,18 @@
   transition-delay: 0s !important;
 }
 
+/* Exception: Allow loading spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Loading spinner gets animation override */
+.news-grid div[style*="animation: spin"] {
+  animation: spin 1s linear infinite !important;
+  animation-duration: 1s !important;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--slate-dark);

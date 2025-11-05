@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initFAQ();
   initCounterAnimation();
   initScrollAnimations();
+  initDynamicNews();
 });
 
 // ============================================
@@ -142,6 +143,105 @@ function initFAQ() {
       }
     });
   });
+}
+
+// ============================================
+// Dynamic News Fetching
+// ============================================
+function initDynamicNews() {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  const lang = getCurrentLang();
+
+  // Add loading state
+  newsGrid.innerHTML = `
+    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+      <div style="display: inline-block; width: 50px; height: 50px; border: 4px solid rgba(15, 107, 99, 0.1); border-top-color: var(--trust-teal); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <p style="margin-top: 1rem; color: var(--slate-dark);">
+        ${lang === 'tr' ? 'Haberler yükleniyor...' : 'Loading news...'}
+      </p>
+    </div>
+  `;
+
+  // Fetch news from API
+  fetch('/api/news')
+    .then(response => response.json())
+    .then(data => {
+      if (data.success && data.news && data.news.length > 0) {
+        displayNews(data.news, lang);
+      } else {
+        // Show fallback news if API fails
+        displayNews(data.news || [], lang);
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching news:', error);
+      // Show fallback static news
+      showFallbackNews(lang);
+    });
+}
+
+function displayNews(newsItems, lang) {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  // Clear loading state
+  newsGrid.innerHTML = '';
+
+  newsItems.forEach(item => {
+    const newsCard = document.createElement('div');
+    newsCard.className = 'news-card';
+    newsCard.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" class="news-image" loading="lazy">
+      <div class="news-content">
+        <div class="news-date">${item.date}</div>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <a href="${item.link}" target="_blank" class="read-more">
+          ${lang === 'tr' ? 'Devamını Oku' : 'Read More'}
+        </a>
+      </div>
+    `;
+    newsGrid.appendChild(newsCard);
+  });
+}
+
+function showFallbackNews(lang) {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  const fallbackNews = [
+    {
+      title: lang === 'tr' ? 'Türkiye İklim Yasası Kabul Edildi' : 'Turkey Climate Law Approved',
+      description: lang === 'tr'
+        ? 'Meclis tarafından kabul edilen İklim Yasası, 2053 net sıfır emisyon hedefine yasal zemin oluşturuyor.'
+        : 'The Climate Law approved by Parliament establishes a legal basis for the 2053 net zero emissions target.',
+      link: 'https://carbonherald.com/turkey-set-to-launch-carbon-market-board-emissions-trading-system/',
+      date: lang === 'tr' ? '9 Temmuz 2025' : 'July 9, 2025',
+      image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80'
+    },
+    {
+      title: lang === 'tr' ? 'Türkiye Emisyon Ticaret Sistemi 2026\'da Başlıyor' : 'Turkish Emissions Trading System Launching in 2026',
+      description: lang === 'tr'
+        ? 'Karbon Piyasası Kurulu, pilot ETS sistemini 2026-2027 döneminde başlatmayı planlıyor.'
+        : 'The Carbon Market Board plans to launch the pilot ETS system in the 2026-2027 period.',
+      link: 'https://icapcarbonaction.com/en/news/turkey-advances-towards-establishing-emissions-trading-system',
+      date: lang === 'tr' ? '15 Haziran 2025' : 'June 15, 2025',
+      image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80'
+    },
+    {
+      title: lang === 'tr' ? 'AB Karbon Sınır Düzenlemesi 2026\'da Yürürlüğe Giriyor' : 'EU Carbon Border Adjustment Mechanism Effective 2026',
+      description: lang === 'tr'
+        ? 'EU CBAM mekanizması, yüksek karbon ayak izli ithalatlara vergi getirecek.'
+        : 'The EU CBAM mechanism will impose taxes on imports with high carbon footprints.',
+      link: 'https://www.goldsteinrenewable.com/insights/emission-trading-system-turkey',
+      date: lang === 'tr' ? '1 Mayıs 2025' : 'May 1, 2025',
+      image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80'
+    }
+  ];
+
+  displayNews(fallbackNews, lang);
 }
 
 // ============================================
