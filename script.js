@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initFAQ();
   initCounterAnimation();
   initScrollAnimations();
+  // initDynamicNews(); // DISABLED - using static news in HTML instead
 });
 
 // ============================================
@@ -39,10 +40,17 @@ function initMiniCalculator() {
 
   calculateBtn.addEventListener('click', function() {
     const electricity = parseFloat(document.getElementById('quickElectricity')?.value) || 0;
+
+    if (electricity === 0) {
+      alert(getCurrentLang() === 'tr' ? 'Lütfen elektrik tüketiminizi girin' : 'Please enter your electricity consumption');
+      return;
+    }
+
     const result = (electricity * 0.5).toFixed(2); // Simple calculation: kWh * 0.5 kg CO2
 
     const resultDiv = document.getElementById('quickResult');
     if (resultDiv) {
+      resultDiv.style.display = 'block';
       resultDiv.innerHTML = `
         <strong>${result} kg CO₂</strong>
         <p style="font-size: 0.875rem; margin-top: 0.5rem;">
@@ -102,78 +110,15 @@ function initCarbonCalculator() {
 }
 
 // ============================================
-// Live Market Data with Chart.js
+// Live Market Data - DISABLED
 // ============================================
 function initLiveMarketData() {
-  const canvas = document.getElementById('marketChart');
-  if (!canvas) return;
-
-  // Simulate real-time data
-  const ctx = canvas.getContext('2d');
-
-  const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
-      datasets: [{
-        label: 'Carbon Price (€/ton)',
-        data: [85, 87, 89, 92, 90, 91, 93],
-        borderColor: '#A6E22E',
-        backgroundColor: 'rgba(166, 226, 46, 0.1)',
-        tension: 0.4,
-        fill: true
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: false,
-          ticks: {
-            color: '#ffffff'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          }
-        },
-        x: {
-          ticks: {
-            color: '#ffffff'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          }
-        }
-      }
-    }
-  });
-
-  // Update live data every 5 seconds (simulation)
-  setInterval(() => {
-    updateLiveStats();
-  }, 5000);
+  // ALL UPDATES DISABLED to prevent any layout shifts
+  // Page is now completely static
 }
 
 function updateLiveStats() {
-  // Simulate live updates
-  const currentPrice = document.getElementById('currentPrice');
-  const tradingVolume = document.getElementById('tradingVolume');
-
-  if (currentPrice) {
-    const price = (85 + Math.random() * 15).toFixed(2);
-    currentPrice.textContent = `€${price}`;
-  }
-
-  if (tradingVolume) {
-    const volume = (Math.random() * 5 + 45).toFixed(1);
-    tradingVolume.textContent = `${volume}M`;
-  }
+  // DISABLED - no auto-updates to prevent flickering
 }
 
 // ============================================
@@ -201,46 +146,163 @@ function initFAQ() {
 }
 
 // ============================================
-// Counter Animation for Statistics
+// Dynamic News Fetching
+// ============================================
+function initDynamicNews() {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  const lang = getCurrentLang();
+
+  // Add loading state
+  newsGrid.innerHTML = `
+    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+      <div style="display: inline-block; width: 50px; height: 50px; border: 4px solid rgba(15, 107, 99, 0.1); border-top-color: var(--trust-teal); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+      <p style="margin-top: 1rem; color: var(--slate-dark);">
+        ${lang === 'tr' ? 'Haberler yükleniyor...' : 'Loading news...'}
+      </p>
+    </div>
+  `;
+
+  // Fetch news directly from rss2json API
+  const RSS_FEED_URL = 'https://carbonherald.com/feed/';
+  const RSS2JSON_API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}&count=6`;
+
+  fetch(RSS2JSON_API)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('RSS fetch failed');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.status === 'ok' && data.items && data.items.length > 0) {
+        // Process and format news items
+        const newsItems = data.items.slice(0, 3).map(item => {
+          // Extract image from content if available
+          let imageUrl = 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80';
+          const imgMatch = item.content?.match(/<img[^>]+src="([^">]+)"/);
+          if (imgMatch) {
+            imageUrl = imgMatch[1];
+          } else if (item.thumbnail) {
+            imageUrl = item.thumbnail;
+          } else if (item.enclosure?.link) {
+            imageUrl = item.enclosure.link;
+          }
+
+          // Clean description
+          let description = item.description || item.content || '';
+          description = description.replace(/<[^>]*>/g, '').trim();
+          description = description.substring(0, 200) + '...';
+
+          // Format date
+          const date = new Date(item.pubDate);
+          const formattedDate = date.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+
+          return {
+            title: item.title,
+            description: description,
+            link: item.link,
+            date: formattedDate,
+            image: imageUrl
+          };
+        });
+
+        displayNews(newsItems, lang);
+      } else {
+        throw new Error('No news items found');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching news:', error);
+      // Show fallback static news
+      showFallbackNews(lang);
+    });
+}
+
+function displayNews(newsItems, lang) {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  // Clear loading state
+  newsGrid.innerHTML = '';
+
+  newsItems.forEach(item => {
+    const newsCard = document.createElement('div');
+    newsCard.className = 'news-card';
+    newsCard.innerHTML = `
+      <img src="${item.image}" alt="${item.title}" class="news-image" loading="lazy">
+      <div class="news-content">
+        <div class="news-date">${item.date}</div>
+        <h3>${item.title}</h3>
+        <p>${item.description}</p>
+        <a href="${item.link}" target="_blank" class="read-more">
+          ${lang === 'tr' ? 'Devamını Oku' : 'Read More'}
+        </a>
+      </div>
+    `;
+    newsGrid.appendChild(newsCard);
+  });
+}
+
+function showFallbackNews(lang) {
+  const newsGrid = document.querySelector('.news-grid');
+  if (!newsGrid) return;
+
+  const fallbackNews = [
+    {
+      title: lang === 'tr' ? 'Türkiye İklim Yasası Kabul Edildi' : 'Turkey Climate Law Approved',
+      description: lang === 'tr'
+        ? 'Meclis tarafından kabul edilen İklim Yasası, 2053 net sıfır emisyon hedefine yasal zemin oluşturuyor.'
+        : 'The Climate Law approved by Parliament establishes a legal basis for the 2053 net zero emissions target.',
+      link: 'https://carbonherald.com/turkey-set-to-launch-carbon-market-board-emissions-trading-system/',
+      date: lang === 'tr' ? '9 Temmuz 2025' : 'July 9, 2025',
+      image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80'
+    },
+    {
+      title: lang === 'tr' ? 'Türkiye Emisyon Ticaret Sistemi 2026\'da Başlıyor' : 'Turkish Emissions Trading System Launching in 2026',
+      description: lang === 'tr'
+        ? 'Karbon Piyasası Kurulu, pilot ETS sistemini 2026-2027 döneminde başlatmayı planlıyor.'
+        : 'The Carbon Market Board plans to launch the pilot ETS system in the 2026-2027 period.',
+      link: 'https://icapcarbonaction.com/en/news/turkey-advances-towards-establishing-emissions-trading-system',
+      date: lang === 'tr' ? '15 Haziran 2025' : 'June 15, 2025',
+      image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80'
+    },
+    {
+      title: lang === 'tr' ? 'AB Karbon Sınır Düzenlemesi 2026\'da Yürürlüğe Giriyor' : 'EU Carbon Border Adjustment Mechanism Effective 2026',
+      description: lang === 'tr'
+        ? 'EU CBAM mekanizması, yüksek karbon ayak izli ithalatlara vergi getirecek.'
+        : 'The EU CBAM mechanism will impose taxes on imports with high carbon footprints.',
+      link: 'https://www.goldsteinrenewable.com/insights/emission-trading-system-turkey',
+      date: lang === 'tr' ? '1 Mayıs 2025' : 'May 1, 2025',
+      image: 'https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?w=800&q=80'
+    }
+  ];
+
+  displayNews(fallbackNews, lang);
+}
+
+// ============================================
+// Counter Animation - DISABLED
 // ============================================
 function initCounterAnimation() {
+  // Counter animation DISABLED to prevent layout shifts
+  // Numbers are now static (shown directly in HTML)
   const counters = document.querySelectorAll('.stat-number');
-
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        animateCounter(counter);
-        observer.unobserve(counter);
-      }
-    });
-  }, observerOptions);
-
   counters.forEach(counter => {
-    observer.observe(counter);
+    const target = parseInt(counter.getAttribute('data-target'));
+    if (target) {
+      counter.textContent = formatNumber(target);
+    }
   });
 }
 
 function animateCounter(element) {
-  const target = parseInt(element.getAttribute('data-target'));
-  const duration = 2000; // 2 seconds
-  const increment = target / (duration / 16); // 60 FPS
-  let current = 0;
-
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = formatNumber(target);
-      clearInterval(timer);
-    } else {
-      element.textContent = formatNumber(Math.floor(current));
-    }
-  }, 16);
+  // DISABLED - no animation
 }
 
 function formatNumber(num) {
@@ -253,28 +315,11 @@ function formatNumber(num) {
 }
 
 // ============================================
-// Scroll Animations
+// Scroll Animations - DISABLED
 // ============================================
 function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.user-card, .package-card, .step-card, .news-card, .team-card');
-
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  animatedElements.forEach(element => {
-    observer.observe(element);
-  });
+  // Scroll animations DISABLED to prevent layout shifts
+  // All elements are now visible immediately (no fade-in)
 }
 
 // ============================================
