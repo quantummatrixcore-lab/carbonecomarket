@@ -164,15 +164,57 @@ function initDynamicNews() {
     </div>
   `;
 
-  // Fetch news from API
-  fetch('/api/news')
-    .then(response => response.json())
+  // Fetch news directly from rss2json API
+  const RSS_FEED_URL = 'https://carbonherald.com/feed/';
+  const RSS2JSON_API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}&count=6`;
+
+  fetch(RSS2JSON_API)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('RSS fetch failed');
+      }
+      return response.json();
+    })
     .then(data => {
-      if (data.success && data.news && data.news.length > 0) {
-        displayNews(data.news, lang);
+      if (data.status === 'ok' && data.items && data.items.length > 0) {
+        // Process and format news items
+        const newsItems = data.items.slice(0, 3).map(item => {
+          // Extract image from content if available
+          let imageUrl = 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&q=80';
+          const imgMatch = item.content?.match(/<img[^>]+src="([^">]+)"/);
+          if (imgMatch) {
+            imageUrl = imgMatch[1];
+          } else if (item.thumbnail) {
+            imageUrl = item.thumbnail;
+          } else if (item.enclosure?.link) {
+            imageUrl = item.enclosure.link;
+          }
+
+          // Clean description
+          let description = item.description || item.content || '';
+          description = description.replace(/<[^>]*>/g, '').trim();
+          description = description.substring(0, 200) + '...';
+
+          // Format date
+          const date = new Date(item.pubDate);
+          const formattedDate = date.toLocaleDateString(lang === 'tr' ? 'tr-TR' : 'en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          });
+
+          return {
+            title: item.title,
+            description: description,
+            link: item.link,
+            date: formattedDate,
+            image: imageUrl
+          };
+        });
+
+        displayNews(newsItems, lang);
       } else {
-        // Show fallback news if API fails
-        displayNews(data.news || [], lang);
+        throw new Error('No news items found');
       }
     })
     .catch(error => {
