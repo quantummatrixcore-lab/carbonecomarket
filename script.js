@@ -105,78 +105,8 @@ function initCarbonCalculator() {
 // Live Market Data with Chart.js
 // ============================================
 function initLiveMarketData() {
-  const canvas = document.getElementById('marketChart');
-  if (!canvas) return;
-
-  // Set fixed canvas size to prevent resizing
-  canvas.width = 800;
-  canvas.height = 300;
-
-  // Simulate real-time data
-  const ctx = canvas.getContext('2d');
-
-  const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
-      datasets: [{
-        label: 'Carbon Price (€/ton)',
-        data: [85, 87, 89, 92, 90, 91, 93],
-        borderColor: '#A6E22E',
-        backgroundColor: 'rgba(166, 226, 46, 0.1)',
-        tension: 0.4,
-        fill: true,
-        pointRadius: 0,
-        pointHoverRadius: 0
-      }]
-    },
-    options: {
-      responsive: false,
-      maintainAspectRatio: false,
-      animation: false,
-      animations: {
-        tension: {
-          duration: 0
-        }
-      },
-      transitions: {
-        active: {
-          animation: {
-            duration: 0
-          }
-        }
-      },
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          enabled: false
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: false,
-          ticks: {
-            color: '#ffffff'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          }
-        },
-        x: {
-          ticks: {
-            color: '#ffffff'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          }
-        }
-      }
-    }
-  });
-
-  // Update live data every 5 seconds (simulation) - only numbers, not chart
+  // Chart disabled to prevent layout issues
+  // Only update live stats numbers
   setInterval(() => {
     updateLiveStats();
   }, 5000);
