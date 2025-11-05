@@ -356,79 +356,152 @@ ul { list-style: none; }
   margin-bottom: 1.5rem;
 }
 
-/* Carbon Calculator Module */
+/* Carbon Calculator Module - Enhanced */
 .calculator-module {
   padding: 5rem 0;
-  background: var(--white);
+  background: linear-gradient(180deg, var(--white) 0%, var(--cloud-light) 100%);
+  position: relative;
 }
 
 .calculator-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  background: var(--cloud-light);
+  background: var(--white);
   padding: 3rem;
-  border-radius: 12px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(15, 107, 99, 0.1);
 }
 
 .calculator-steps {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.calculator-steps::before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cloud-light) 0%, var(--trust-teal) 100%);
+  z-index: 0;
 }
 
 .step {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   color: var(--slate-medium);
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .step.active {
   color: var(--trust-teal);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .step-number {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   background: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--cloud-light);
+  border: 3px solid var(--cloud-light);
+  font-size: 1.25rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .step.active .step-number {
-  background: var(--trust-teal);
+  background: linear-gradient(135deg, var(--trust-teal), var(--success-emerald));
   color: var(--white);
   border-color: var(--trust-teal);
+  box-shadow: 0 6px 20px rgba(15, 107, 99, 0.3);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
   color: var(--slate-dark);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group label i {
+  color: var(--trust-teal);
+  font-size: 1.25rem;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.875rem;
-  border: 2px solid var(--cloud-light);
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+  border-color: #d1d5db;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
   border-color: var(--trust-teal);
+  box-shadow: 0 0 0 3px rgba(15, 107, 99, 0.1);
+}
+
+.form-group input::placeholder {
+  color: var(--slate-medium);
+  opacity: 0.6;
+}
+
+#calculateCarbon {
+  margin-top: 2rem;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--trust-teal), var(--success-emerald));
+  border: none;
+  box-shadow: 0 6px 20px rgba(15, 107, 99, 0.25);
+}
+
+#calculateCarbon:hover {
+  box-shadow: 0 8px 30px rgba(15, 107, 99, 0.35);
+}
+
+#calculatorResult {
+  margin-top: 2.5rem;
+}
+
+#calculatorResult > div {
+  background: linear-gradient(135deg, rgba(15, 107, 99, 0.05), rgba(16, 185, 129, 0.05)) !important;
+  border: 2px solid var(--trust-teal);
+  padding: 2.5rem !important;
+  border-radius: 16px !important;
+  text-align: center;
 }
 
 /* Certificate Purchase */
