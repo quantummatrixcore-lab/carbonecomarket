@@ -1,18 +1,6 @@
 {
-  "routes": [
-    {
-      "src": "/en",
-      "dest": "/en/index.html"
-    },
-    {
-      "src": "/en/(.*)",
-      "dest": "/en/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
