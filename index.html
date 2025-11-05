@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CarbonEcoMarket - Küresel Karbon Pazar Yeri. Karbon ayak izinizi hesaplayın, sertifika alın, sürdürülebilir geleceğe katkı sağlayın.">
+  <meta name="keywords" content="karbon, karbon kredisi, karbon ayak izi, sürdürülebilirlik, karbon piyasası, yeşil enerji">
+  <meta name="author" content="CarbonEcoMarket">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="CarbonEcoMarket - Küresel Karbon Pazar Yeri">
+  <meta property="og:description" content="Karbon ayak izinizi hesaplayın, sertifika alın, sürdürülebilir geleceğe katkı sağlayın">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://carbonecomarket.com">
+  <meta property="og:image" content="https://carbonecomarket.com/images/hero-main.jpg">
+
+  <!-- Language Alternate -->
+  <link rel="alternate" hreflang="en" href="https://carbonecomarket.com/en/">
+  <link rel="alternate" hreflang="tr" href="https://carbonecomarket.com/">
+
+  <title>CarbonEcoMarket - Küresel Karbon Pazar Yeri</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="logo">
+        <i class="fas fa-leaf"></i>
+        CarbonEcoMarket
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link">Ana Sayfa</a></li>
+        <li><a href="#user-types" class="nav-link">Hakkımızda</a></li>
+        <li><a href="#services" class="nav-link">Hizmetler</a></li>
+        <li><a href="#contact" class="nav-link">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <a href="/" class="active">TR</a>
+          <span>/</span>
+          <a href="/en/">EN</a>
+        </div>
+        <a href="#" class="btn btn-outline">Giriş Yap</a>
+        <a href="#" class="btn btn-primary">Üye Ol</a>
+      </div>
+
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Küresel Karbon Pazar Yeri</h1>
+          <p>Karbon ayak izinizi hesaplayın, sertifika alın, sürdürülebilir geleceğe katkı sağlayın</p>
+          <div class="hero-buttons">
+            <a href="#calculator" class="btn btn-primary">Hemen Başla</a>
+            <a href="#contact" class="btn btn-secondary">Kurumsal Demo</a>
+          </div>
+        </div>
+
+        <div class="mini-calculator">
+          <h3>Hızlı Hesaplama</h3>
+          <input type="number" id="quickElectricity" class="calculator-input" placeholder="Aylık elektrik tüketimi (kWh)">
+          <button id="quickCalculateBtn" class="btn btn-primary" style="width: 100%;">Hesapla</button>
+          <div id="quickResult" class="calculator-result" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- User Types Section -->
+  <section class="user-types" id="user-types">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kimler İçin?</h2>
+        <p>Her kesimden kullanıcı için özelleştirilmiş karbon yönetimi çözümleri</p>
+      </div>
+
+      <div class="user-grid">
+        <div class="user-card">
+          <i class="fas fa-user"></i>
+          <h3>Bireysel Kullanıcılar</h3>
+          <p>Kişisel karbon ayak izinizi hesaplayın ve sertifika alın</p>
+          <a href="#calculator" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-seedling"></i>
+          <h3>Çiftçiler</h3>
+          <p>Karbon kredisi üretin ve satın</p>
+          <a href="#" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-building"></i>
+          <h3>Kurumsal</h3>
+          <p>Şirketinizin karbon yönetimini optimize edin</p>
+          <a href="#" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-hands-helping"></i>
+          <h3>STK'lar</h3>
+          <p>Çevre projelerinizi karbon kredisine dönüştürün</p>
+          <a href="#" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Traderlar</h3>
+          <p>Profesyonel karbon ticareti yapın</p>
+          <a href="#" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-bolt"></i>
+          <h3>Enerji Sektörü</h3>
+          <p>Enerji şirketleri için özel çözümler</p>
+          <a href="#" class="btn btn-outline">Keşfet</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-handshake"></i>
+          <h3>İş Ortakları</h3>
+          <p>API entegrasyonu ile platformumuza entegre olun</p>
+          <a href="#tech-features" class="btn btn-outline">Keşfet</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carbon Calculator Module -->
+  <section class="calculator-module" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <h2>Karbon Ayak İzinizi Hesaplayın</h2>
+        <p>Tüketim verilerinizi girerek karbon ayak izinizi öğrenin</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calculator-steps">
+          <div class="step active">
+            <span class="step-number">1</span>
+            <span>Fatura Bilgileri</span>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <span>Ulaşım</span>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <span>Sonuç</span>
+          </div>
+        </div>
+
+        <form id="carbonCalculatorForm">
+          <div class="form-group">
+            <label for="electricity">Aylık Elektrik Tüketimi (kWh)</label>
+            <input type="number" id="electricity" placeholder="Örn: 300" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gas">Aylık Doğalgaz Tüketimi (m³)</label>
+            <input type="number" id="gas" placeholder="Örn: 50" required>
+          </div>
+
+          <div class="form-group">
+            <label for="water">Aylık Su Tüketimi (m³)</label>
+            <input type="number" id="water" placeholder="Örn: 15" required>
+          </div>
+
+          <div class="form-group">
+            <label for="transport">Aylık Araç Kullanımı (km)</label>
+            <input type="number" id="transport" placeholder="Örn: 500" required>
+          </div>
+
+          <button type="button" id="calculateCarbon" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-calculator"></i> Hesapla
+          </button>
+        </form>
+
+        <div id="calculatorResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificate Purchase -->
+  <section class="certificate-purchase" id="certificate-purchase">
+    <div class="container">
+      <div class="section-header">
+        <h2>Karbon Sertifikası Satın Alın</h2>
+        <p>Karbon ayak izinizi dengelemek için sertifika paketlerimizi inceleyin</p>
+      </div>
+
+      <div class="package-grid">
+        <div class="package-card">
+          <i class="fas fa-leaf" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Başlangıç</h3>
+          <div class="package-price">€45</div>
+          <p>1 ton CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Dijital Sertifika</li>
+            <li><i class="fas fa-check"></i> E-posta Desteği</li>
+            <li><i class="fas fa-check"></i> Aylık Rapor</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Satın Al</a>
+        </div>
+
+        <div class="package-card featured">
+          <i class="fas fa-tree" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Standart</h3>
+          <div class="package-price">€200</div>
+          <p>5 ton CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Dijital Sertifika</li>
+            <li><i class="fas fa-check"></i> Öncelikli Destek</li>
+            <li><i class="fas fa-check"></i> Haftalık Rapor</li>
+            <li><i class="fas fa-check"></i> %10 İndirim</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Satın Al</a>
+        </div>
+
+        <div class="package-card">
+          <i class="fas fa-globe" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Premium</h3>
+          <div class="package-price">€380</div>
+          <p>10 ton CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Dijital Sertifika</li>
+            <li><i class="fas fa-check"></i> 7/24 Destek</li>
+            <li><i class="fas fa-check"></i> Günlük Rapor</li>
+            <li><i class="fas fa-check"></i> %15 İndirim</li>
+            <li><i class="fas fa-check"></i> Özel Danışman</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Satın Al</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Platform Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Platform Nasıl Çalışır?</h2>
+        <p>4 basit adımda karbon ayak izinizi dengeleyin</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3>1. Hesapla</h3>
+          <p>Karbon ayak izinizi hesaplayın</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>2. Seç</h3>
+          <p>Size uygun paketi seçin</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <h3>3. Öde</h3>
+          <p>Güvenli ödeme yapın</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>4. Sertifika Al</h3>
+          <p>Dijital sertifikanızı alın</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Market Data -->
+  <section class="live-market" id="live-market">
+    <div class="container">
+      <div class="section-header">
+        <h2>Karbon Piyasası - Canlı</h2>
+        <p>Anlık piyasa verileri ve trendler</p>
+      </div>
+
+      <div class="market-dashboard">
+        <div class="market-card">
+          <h3>Güncel Fiyat</h3>
+          <div class="market-value" id="currentPrice">€89.50</div>
+          <div class="market-change">+2.3% <i class="fas fa-arrow-up"></i></div>
+        </div>
+
+        <div class="market-card">
+          <h3>İşlem Hacmi</h3>
+          <div class="market-value" id="tradingVolume">47.2M</div>
+          <div class="market-change">€/gün</div>
+        </div>
+
+        <div class="market-card">
+          <h3>Aktif İşlem</h3>
+          <div class="market-value">1,245</div>
+          <div class="market-change">Son 24 saat</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <canvas id="marketChart" style="height: 300px;"></canvas>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn btn-primary">Detaylı Piyasa Verileri</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Climate Agreements -->
+  <section class="climate-agreements" id="climate-agreements">
+    <div class="container">
+      <div class="section-header">
+        <h2>İklim Anlaşmaları & Üye Ülkeler</h2>
+        <p>Küresel iklim mücadelesinde öncü anlaşmalar</p>
+      </div>
+
+      <div class="agreements-grid">
+        <div class="agreement-card">
+          <h3><i class="fas fa-globe-americas"></i> Paris Anlaşması</h3>
+          <p>Küresel ısınmayı 1.5°C ile sınırlamayı hedefleyen tarihî anlaşma.</p>
+          <span class="country-count"><i class="fas fa-flag"></i> 195 Üye Ülke</span>
+          <ul style="margin-top: 1rem; color: var(--slate-medium);">
+            <li>• 2015 yılında imzalandı</li>
+            <li>• 2016'da yürürlüğe girdi</li>
+            <li>• Net sıfır emisyon hedefi</li>
+          </ul>
+        </div>
+
+        <div class="agreement-card">
+          <h3><i class="fas fa-leaf"></i> Kyoto Protokolü</h3>
+          <p>Sera gazı emisyonlarının azaltılması için ilk küresel anlaşma.</p>
+          <span class="country-count"><i class="fas fa-flag"></i> 192 Üye Ülke</span>
+          <ul style="margin-top: 1rem; color: var(--slate-medium);">
+            <li>• 1997 yılında kabul edildi</li>
+            <li>• İlk karbon ticareti sistemi</li>
+            <li>• Emisyon azaltım mekanizması</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <p style="color: var(--slate-medium);">
+          <i class="fas fa-info-circle"></i> İnteraktif harita ve detaylı bilgiler yakında eklenecektir
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news-section" id="news">
+    <div class="container">
+      <div class="section-header">
+        <h2>Son Haberler</h2>
+        <p>Karbon piyasası ve sürdürülebilirlik haberleri</p>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="images/sustainability-1.jpg" alt="Haber 1" class="news-image">
+          <div class="news-content">
+            <div class="news-date">5 Kasım 2025</div>
+            <h3>AB Karbon Fiyatları Rekor Seviyeye Ulaştı</h3>
+            <p>Avrupa Birliği karbon emisyon ticaret sistemi (ETS) fiyatları ton başına 100 euroya yaklaştı.</p>
+            <a href="#" class="read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/sustainability-2.jpg" alt="Haber 2" class="news-image">
+          <div class="news-content">
+            <div class="news-date">3 Kasım 2025</div>
+            <h3>Türkiye'de Karbon Piyasası Hızla Büyüyor</h3>
+            <p>Yerli ve yabancı yatırımcıların ilgisi arttıkça Türkiye'de karbon kredisi ticareti ivme kazanıyor.</p>
+            <a href="#" class="read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="images/corporate.jpg" alt="Haber 3" class="news-image">
+          <div class="news-content">
+            <div class="news-date">1 Kasım 2025</div>
+            <h3>Kurumlar Sürdürülebilirlik Raporlamasına Hazırlanıyor</h3>
+            <p>Yeni düzenlemelerle birlikte şirketlerin karbon ayak izi raporlaması zorunlu hale geliyor.</p>
+            <a href="#" class="read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn btn-outline">Tüm Haberler</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects & Certificates -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Desteklenen Projeler</h2>
+        <p>Karbon kredileriniz bu projeleri destekliyor</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="images/farmer.jpg" alt="Ağaçlandırma" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Ağaçlandırma</span>
+            <h3>Anadolu Ağaçlandırma Projesi</h3>
+            <p>50.000 ağaç dikimi ile yıllık 25.000 ton CO₂ emilimi hedefleniyor.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">VCS Sertifikalı</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/energy.jpg" alt="Güneş Enerjisi" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Yenilenebilir Enerji</span>
+            <h3>Güneş Enerjisi Santrali</h3>
+            <p>100 MW kapasiteli güneş enerjisi santrali ile temiz enerji üretimi.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">Gold Standard</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="images/ngo.jpg" alt="Rüzgar Enerjisi" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Rüzgar Enerjisi</span>
+            <h3>Ege Rüzgar Parkı</h3>
+            <p>150 MW rüzgar enerjisi ile yıllık 300.000 ton CO₂ tasarrufu.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">ISO 14064</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Statistics -->
+  <section class="live-stats" id="stats">
+    <div class="container">
+      <h2>Canlı İstatistikler</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="totalCO2" data-target="2500000">0</span>
+          <div class="stat-label">Dengelenen Toplam CO₂ (ton)</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="activeUsers" data-target="15000">0</span>
+          <div class="stat-label">Aktif Kullanıcı</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="dailyVolume" data-target="45000000">0</span>
+          <div class="stat-label">Günlük İşlem Hacmi (€)</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="projectsSupported" data-target="250">0</span>
+          <div class="stat-label">Desteklenen Proje</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="registeredFarmers" data-target="3500">0</span>
+          <div class="stat-label">Kayıtlı Çiftçi</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="partnerNGOs" data-target="85">0</span>
+          <div class="stat-label">Partner STK</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="traderCount" data-target="1200">0</span>
+          <div class="stat-label">Trader Sayısı</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="apiCalls" data-target="5000000">0</span>
+          <div class="stat-label">Günlük API Çağrı</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Packages -->
+  <section class="subscription-section" id="subscription">
+    <div class="container">
+      <div class="section-header">
+        <h2>Abonelik Paketleri</h2>
+        <p>İhtiyacınıza uygun paketi seçin</p>
+      </div>
+
+      <div class="subscription-grid">
+        <div class="subscription-card">
+          <div class="subscription-name">Bireysel</div>
+          <div class="subscription-price">₺299</div>
+          <div class="subscription-period">/ay</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Aylık 2 ton karbon kredisi</li>
+            <li><i class="fas fa-check"></i> Dijital sertifika</li>
+            <li><i class="fas fa-check"></i> Aylık rapor</li>
+            <li><i class="fas fa-check"></i> E-posta desteği</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Başla</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">Kurumsal</div>
+          <div class="subscription-price">₺2,999</div>
+          <div class="subscription-period">/ay</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Aylık 50 ton karbon kredisi</li>
+            <li><i class="fas fa-check"></i> API erişimi</li>
+            <li><i class="fas fa-check"></i> Haftalık rapor</li>
+            <li><i class="fas fa-check"></i> Öncelikli destek</li>
+            <li><i class="fas fa-check"></i> Özel danışman</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Başla</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">Trader</div>
+          <div class="subscription-price">₺999</div>
+          <div class="subscription-period">/ay</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Sınırsız işlem</li>
+            <li><i class="fas fa-check"></i> Gelişmiş analitik</li>
+            <li><i class="fas fa-check"></i> API erişimi</li>
+            <li><i class="fas fa-check"></i> 7/24 destek</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Başla</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">STK</div>
+          <div class="subscription-price">₺1,499</div>
+          <div class="subscription-period">/ay</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Proje yönetimi</li>
+            <li><i class="fas fa-check"></i> Sertifika üretimi</li>
+            <li><i class="fas fa-check"></i> Bağışçı raporlama</li>
+            <li><i class="fas fa-check"></i> Özel destek</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Başla</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="tech-features" id="tech-features">
+    <div class="container">
+      <div class="section-header">
+        <h2>API-First Mimari</h2>
+        <p>Modern teknoloji altyapısı ile güçlü entegrasyon</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <i class="fas fa-code"></i>
+          <h3>RESTful API</h3>
+          <p>Kapsamlı ve kullanımı kolay API dokümantasyonu ile hızlı entegrasyon</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-plug"></i>
+          <h3>WebSocket</h3>
+          <p>Gerçek zamanlı piyasa verilerine anlık erişim</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>OAuth 2.0</h3>
+          <p>Güvenli kimlik doğrulama ve yetkilendirme</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-database"></i>
+          <h3>Blockchain</h3>
+          <p>Sertifikaların şeffaf ve izlenebilir saklanması</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="#" class="btn btn-primary">API Dokümantasyonu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Ecosystem -->
+  <section class="partner-ecosystem" id="partners">
+    <div class="container">
+      <div class="section-header">
+        <h2>Partner Ekosistemi</h2>
+        <p>Güvenilir ortaklarımız</p>
+      </div>
+
+      <div class="partner-grid">
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-hands-helping"></i></div>
+          <h4>STK'lar</h4>
+          <p>85+ STK</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-bolt"></i></div>
+          <h4>Enerji Şirketleri</h4>
+          <p>40+ Partner</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-building"></i></div>
+          <h4>Kurumsal Müşteriler</h4>
+          <p>500+ Şirket</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-university"></i></div>
+          <h4>Araştırma Kurumları</h4>
+          <p>25+ Kurum</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Compliance -->
+  <section class="trust-compliance" id="compliance">
+    <div class="container">
+      <div class="section-header">
+        <h2>Güven & Uyumluluk</h2>
+        <p>Uluslararası standartlara uygun sertifikasyonlar</p>
+      </div>
+
+      <div class="compliance-grid">
+        <div class="compliance-badge">
+          <i class="fas fa-certificate"></i>
+          <h4>ISO 14064</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-shield-alt"></i>
+          <h4>ISO 27001</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-check-circle"></i>
+          <h4>VCS</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-award"></i>
+          <h4>Gold Standard</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-lock"></i>
+          <h4>GDPR</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-globe"></i>
+          <h4>Paris Agreement</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Resources -->
+  <section class="education-section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <h2>Eğitim & Kaynaklar</h2>
+        <p>Karbon piyasası hakkında bilgi edinin</p>
+      </div>
+
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-book"></i></div>
+          <div class="education-content">
+            <h3>Karbon Kredisi Nedir?</h3>
+            <p>Karbon kredisi sisteminin temellerini öğrenin</p>
+            <a href="#" class="read-more">Oku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="education-content">
+            <h3>Piyasa Nasıl Çalışır?</h3>
+            <p>Karbon piyasası mekanizmalarını anlayın</p>
+            <a href="#" class="read-more">Oku <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-video"></i></div>
+          <div class="education-content">
+            <h3>Video Eğitimler</h3>
+            <p>Görsel eğitim serilerimizi izleyin</p>
+            <a href="#" class="read-more">İzle <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sık Sorulan Sorular</h2>
+        <p>Merak ettikleriniz</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            Karbon kredisi nedir?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Karbon kredisi, 1 ton CO₂ emisyonunun azaltılmasını veya dengelenmesini temsil eden ticarete konu bir sertifikadır.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Sertifika nasıl alınır?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Karbon ayak izinizi hesapladıktan sonra size uygun paketi seçip ödeme yaparak anında dijital sertifikanızı alabilirsiniz.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            Hangi ödeme yöntemleri kabul ediliyor?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Kredi kartı, banka havalesi ve kripto para ile ödeme yapabilirsiniz.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            API entegrasyonu nasıl yapılır?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            API dokümantasyonumuzu inceleyerek hızlıca entegrasyon yapabilirsiniz. Kurumsal destek ekibimiz size yardımcı olmaya hazır.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ekibimiz</h2>
+        <p class="team-subtitle">Deneyimli ekibimizle karbon piyasasını şekillendiriyoruz</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/avatar-placeholder.jpg" alt="Ercüment Erden">
+          </div>
+          <h3>Ercüment Erden</h3>
+          <p class="team-title">Kurucu & CEO</p>
+          <a href="https://www.linkedin.com/in/erc%C3%BCment-erden/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/avatar-placeholder.jpg" alt="Fatih Malyemez">
+          </div>
+          <h3>Fatih Malyemez</h3>
+          <p class="team-title">CTO</p>
+          <a href="https://www.linkedin.com/in/fatih-malyemez-86b98a245/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/avatar-placeholder.jpg" alt="Selim Güven">
+          </div>
+          <h3>Selim Güven</h3>
+          <p class="team-title">İş Geliştirme Direktörü</p>
+          <a href="https://www.linkedin.com/in/selim-g%C3%BCven-a6b70717/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/avatar-placeholder.jpg" alt="Hüseyin Yeğin">
+          </div>
+          <h3>Hüseyin Yeğin</h3>
+          <p class="team-title">Ürün Müdürü</p>
+          <a href="https://www.linkedin.com/in/h%C3%BCseyin-ye%C4%9Fin-2b4290219/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="images/avatar-placeholder.jpg" alt="Ilgın Sözen">
+          </div>
+          <h3>Ilgın Sözen</h3>
+          <p class="team-title">Operasyon Müdürü</p>
+          <a href="https://www.linkedin.com/in/ilg%C4%B1n-s%C3%B6zen-8b2a5963/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CarbonEcoMarket</h3>
+          <p>Küresel karbon pazar yerinde sürdürülebilir geleceği birlikte inşa ediyoruz.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Hızlı Linkler</h3>
+          <ul>
+            <li><a href="#user-types">Hakkımızda</a></li>
+            <li><a href="#calculator">Karbon Hesaplama</a></li>
+            <li><a href="#projects">Projeler</a></li>
+            <li><a href="#team">Ekibimiz</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Yasal</h3>
+          <ul>
+            <li><a href="#">Gizlilik Politikası</a></li>
+            <li><a href="#">Kullanım Şartları</a></li>
+            <li><a href="#">KVKK</a></li>
+            <li><a href="#">Çerez Politikası</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>İletişim</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> info@carbonecomarket.com</li>
+            <li><i class="fas fa-phone"></i> +90 (212) 000 00 00</li>
+            <li><i class="fas fa-map-marker-alt"></i> İstanbul, Türkiye</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Son haberleri ve güncellemeleri alın</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="E-posta adresiniz" required>
+            <button type="submit" class="btn btn-primary">Abone Ol</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 CarbonEcoMarket. Tüm hakları saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
