@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initFAQ();
   initCounterAnimation();
   initScrollAnimations();
-  initDynamicNews();
+  // initDynamicNews(); // DISABLED - using static news in HTML instead
 });
 
 // ============================================
