@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CarbonEcoMarket - Global Carbon Marketplace. Calculate your carbon footprint, get certificates, contribute to sustainable future.">
+  <meta name="keywords" content="carbon, carbon credit, carbon footprint, sustainability, carbon market, green energy">
+  <meta name="author" content="CarbonEcoMarket">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="CarbonEcoMarket - Global Carbon Marketplace">
+  <meta property="og:description" content="Calculate your carbon footprint, get certificates, contribute to sustainable future">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://carbonecomarket.com/en/">
+  <meta property="og:image" content="https://carbonecomarket.com/images/hero-main.jpg">
+
+  <!-- Language Alternate -->
+  <link rel="alternate" hreflang="tr" href="https://carbonecomarket.com/">
+  <link rel="alternate" hreflang="en" href="https://carbonecomarket.com/en/">
+
+  <title>CarbonEcoMarket - Global Carbon Marketplace</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="logo">
+        <i class="fas fa-leaf"></i>
+        CarbonEcoMarket
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#user-types" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <a href="/">TR</a>
+          <span>/</span>
+          <a href="/en/" class="active">EN</a>
+        </div>
+        <a href="#" class="btn btn-outline">Login</a>
+        <a href="#" class="btn btn-primary">Sign Up</a>
+      </div>
+
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Global Carbon Marketplace</h1>
+          <p>Calculate your carbon footprint, get certificates, contribute to sustainable future</p>
+          <div class="hero-buttons">
+            <a href="#calculator" class="btn btn-primary">Get Started</a>
+            <a href="#contact" class="btn btn-secondary">Enterprise Demo</a>
+          </div>
+        </div>
+
+        <div class="mini-calculator">
+          <h3>Quick Calculator</h3>
+          <input type="number" id="quickElectricity" class="calculator-input" placeholder="Monthly electricity consumption (kWh)">
+          <button id="quickCalculateBtn" class="btn btn-primary" style="width: 100%;">Calculate</button>
+          <div id="quickResult" class="calculator-result" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- User Types Section -->
+  <section class="user-types" id="user-types">
+    <div class="container">
+      <div class="section-header">
+        <h2>Who Is It For?</h2>
+        <p>Customized carbon management solutions for every sector</p>
+      </div>
+
+      <div class="user-grid">
+        <div class="user-card">
+          <i class="fas fa-user"></i>
+          <h3>Individual Users</h3>
+          <p>Calculate your personal carbon footprint and get certified</p>
+          <a href="#calculator" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-seedling"></i>
+          <h3>Farmers</h3>
+          <p>Produce and sell carbon credits</p>
+          <a href="#" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-building"></i>
+          <h3>Corporate</h3>
+          <p>Optimize your company's carbon management</p>
+          <a href="#" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-hands-helping"></i>
+          <h3>NGOs</h3>
+          <p>Transform your environmental projects into carbon credits</p>
+          <a href="#" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Traders</h3>
+          <p>Professional carbon trading</p>
+          <a href="#" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-bolt"></i>
+          <h3>Energy Sector</h3>
+          <p>Specialized solutions for energy companies</p>
+          <a href="#" class="btn btn-outline">Explore</a>
+        </div>
+
+        <div class="user-card">
+          <i class="fas fa-handshake"></i>
+          <h3>Business Partners</h3>
+          <p>Integrate with our platform via API</p>
+          <a href="#tech-features" class="btn btn-outline">Explore</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carbon Calculator Module -->
+  <section class="calculator-module" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <h2>Calculate Your Carbon Footprint</h2>
+        <p>Enter your consumption data to learn your carbon footprint</p>
+      </div>
+
+      <div class="calculator-container">
+        <div class="calculator-steps">
+          <div class="step active">
+            <span class="step-number">1</span>
+            <span>Invoice Details</span>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <span>Transportation</span>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <span>Result</span>
+          </div>
+        </div>
+
+        <form id="carbonCalculatorForm">
+          <div class="form-group">
+            <label for="electricity">Monthly Electricity Consumption (kWh)</label>
+            <input type="number" id="electricity" placeholder="e.g., 300" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gas">Monthly Gas Consumption (m³)</label>
+            <input type="number" id="gas" placeholder="e.g., 50" required>
+          </div>
+
+          <div class="form-group">
+            <label for="water">Monthly Water Consumption (m³)</label>
+            <input type="number" id="water" placeholder="e.g., 15" required>
+          </div>
+
+          <div class="form-group">
+            <label for="transport">Monthly Vehicle Usage (km)</label>
+            <input type="number" id="transport" placeholder="e.g., 500" required>
+          </div>
+
+          <button type="button" id="calculateCarbon" class="btn btn-primary" style="width: 100%;">
+            <i class="fas fa-calculator"></i> Calculate
+          </button>
+        </form>
+
+        <div id="calculatorResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificate Purchase -->
+  <section class="certificate-purchase" id="certificate-purchase">
+    <div class="container">
+      <div class="section-header">
+        <h2>Purchase Carbon Certificates</h2>
+        <p>Explore our certificate packages to offset your carbon footprint</p>
+      </div>
+
+      <div class="package-grid">
+        <div class="package-card">
+          <i class="fas fa-leaf" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Starter</h3>
+          <div class="package-price">€45</div>
+          <p>1 ton CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Digital Certificate</li>
+            <li><i class="fas fa-check"></i> Email Support</li>
+            <li><i class="fas fa-check"></i> Monthly Report</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Purchase</a>
+        </div>
+
+        <div class="package-card featured">
+          <i class="fas fa-tree" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Standard</h3>
+          <div class="package-price">€200</div>
+          <p>5 tons CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Digital Certificate</li>
+            <li><i class="fas fa-check"></i> Priority Support</li>
+            <li><i class="fas fa-check"></i> Weekly Report</li>
+            <li><i class="fas fa-check"></i> 10% Discount</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Purchase</a>
+        </div>
+
+        <div class="package-card">
+          <i class="fas fa-globe" style="font-size: 3rem; color: var(--success-emerald);"></i>
+          <h3>Premium</h3>
+          <div class="package-price">€380</div>
+          <p>10 tons CO₂</p>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Digital Certificate</li>
+            <li><i class="fas fa-check"></i> 24/7 Support</li>
+            <li><i class="fas fa-check"></i> Daily Report</li>
+            <li><i class="fas fa-check"></i> 15% Discount</li>
+            <li><i class="fas fa-check"></i> Dedicated Advisor</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Purchase</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Platform Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>How Platform Works?</h2>
+        <p>Offset your carbon footprint in 4 simple steps</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h3>1. Calculate</h3>
+          <p>Calculate your carbon footprint</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h3>2. Select</h3>
+          <p>Choose the package that suits you</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <h3>3. Pay</h3>
+          <p>Make secure payment</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>4. Get Certificate</h3>
+          <p>Receive your digital certificate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Market Data -->
+  <section class="live-market" id="live-market">
+    <div class="container">
+      <div class="section-header">
+        <h2>Carbon Market - Live</h2>
+        <p>Real-time market data and trends</p>
+      </div>
+
+      <div class="market-dashboard">
+        <div class="market-card">
+          <h3>Current Price</h3>
+          <div class="market-value" id="currentPrice">€89.50</div>
+          <div class="market-change">+2.3% <i class="fas fa-arrow-up"></i></div>
+        </div>
+
+        <div class="market-card">
+          <h3>Trading Volume</h3>
+          <div class="market-value" id="tradingVolume">47.2M</div>
+          <div class="market-change">€/day</div>
+        </div>
+
+        <div class="market-card">
+          <h3>Active Trades</h3>
+          <div class="market-value">1,245</div>
+          <div class="market-change">Last 24 hours</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem;">
+        <canvas id="marketChart" style="height: 300px;"></canvas>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn btn-primary">Detailed Market Data</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Climate Agreements -->
+  <section class="climate-agreements" id="climate-agreements">
+    <div class="container">
+      <div class="section-header">
+        <h2>Climate Agreements & Member Countries</h2>
+        <p>Leading agreements in global climate action</p>
+      </div>
+
+      <div class="agreements-grid">
+        <div class="agreement-card">
+          <h3><i class="fas fa-globe-americas"></i> Paris Agreement</h3>
+          <p>Historic agreement aiming to limit global warming to 1.5°C.</p>
+          <span class="country-count"><i class="fas fa-flag"></i> 195 Member Countries</span>
+          <ul style="margin-top: 1rem; color: var(--slate-medium);">
+            <li>• Signed in 2015</li>
+            <li>• Entered into force in 2016</li>
+            <li>• Net zero emission target</li>
+          </ul>
+        </div>
+
+        <div class="agreement-card">
+          <h3><i class="fas fa-leaf"></i> Kyoto Protocol</h3>
+          <p>First global agreement for reducing greenhouse gas emissions.</p>
+          <span class="country-count"><i class="fas fa-flag"></i> 192 Member Countries</span>
+          <ul style="margin-top: 1rem; color: var(--slate-medium);">
+            <li>• Adopted in 1997</li>
+            <li>• First carbon trading system</li>
+            <li>• Emission reduction mechanism</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; text-align: center;">
+        <p style="color: var(--slate-medium);">
+          <i class="fas fa-info-circle"></i> Interactive map and detailed information coming soon
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news-section" id="news">
+    <div class="container">
+      <div class="section-header">
+        <h2>Latest News</h2>
+        <p>Carbon market and sustainability news</p>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="../images/sustainability-1.jpg" alt="News 1" class="news-image">
+          <div class="news-content">
+            <div class="news-date">November 5, 2025</div>
+            <h3>EU Carbon Prices Reach Record High</h3>
+            <p>European Union Emissions Trading System (ETS) prices approaching €100 per ton.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="../images/sustainability-2.jpg" alt="News 2" class="news-image">
+          <div class="news-content">
+            <div class="news-date">November 3, 2025</div>
+            <h3>Turkey's Carbon Market Rapidly Growing</h3>
+            <p>Carbon credit trading gaining momentum in Turkey with increasing investor interest.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="../images/corporate.jpg" alt="News 3" class="news-image">
+          <div class="news-content">
+            <div class="news-date">November 1, 2025</div>
+            <h3>Companies Prepare for Sustainability Reporting</h3>
+            <p>New regulations making carbon footprint reporting mandatory for companies.</p>
+            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="#" class="btn btn-outline">All News</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects & Certificates -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Supported Projects</h2>
+        <p>Your carbon credits support these projects</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="../images/farmer.jpg" alt="Reforestation" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Reforestation</span>
+            <h3>Anatolia Reforestation Project</h3>
+            <p>Planting 50,000 trees targeting 25,000 tons CO₂ absorption annually.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">VCS Certified</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="../images/energy.jpg" alt="Solar Energy" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Renewable Energy</span>
+            <h3>Solar Power Plant</h3>
+            <p>Clean energy production with 100 MW capacity solar power plant.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">Gold Standard</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="../images/ngo.jpg" alt="Wind Energy" class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Wind Energy</span>
+            <h3>Aegean Wind Farm</h3>
+            <p>300,000 tons CO₂ savings annually with 150 MW wind energy.</p>
+            <div style="margin-top: 1rem;">
+              <strong style="color: var(--trust-teal);">ISO 14064</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Statistics -->
+  <section class="live-stats" id="stats">
+    <div class="container">
+      <h2>Live Statistics</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="totalCO2" data-target="2500000">0</span>
+          <div class="stat-label">Total CO₂ Offset (tons)</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="activeUsers" data-target="15000">0</span>
+          <div class="stat-label">Active Users</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="dailyVolume" data-target="45000000">0</span>
+          <div class="stat-label">Daily Trading Volume (€)</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="projectsSupported" data-target="250">0</span>
+          <div class="stat-label">Projects Supported</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="registeredFarmers" data-target="3500">0</span>
+          <div class="stat-label">Registered Farmers</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="partnerNGOs" data-target="85">0</span>
+          <div class="stat-label">Partner NGOs</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="traderCount" data-target="1200">0</span>
+          <div class="stat-label">Trader Count</div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number" id="apiCalls" data-target="5000000">0</span>
+          <div class="stat-label">Daily API Calls</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Packages -->
+  <section class="subscription-section" id="subscription">
+    <div class="container">
+      <div class="section-header">
+        <h2>Subscription Packages</h2>
+        <p>Choose the package that suits your needs</p>
+      </div>
+
+      <div class="subscription-grid">
+        <div class="subscription-card">
+          <div class="subscription-name">Individual</div>
+          <div class="subscription-price">$35</div>
+          <div class="subscription-period">/month</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> 2 tons carbon credit/month</li>
+            <li><i class="fas fa-check"></i> Digital certificate</li>
+            <li><i class="fas fa-check"></i> Monthly report</li>
+            <li><i class="fas fa-check"></i> Email support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">Corporate</div>
+          <div class="subscription-price">$350</div>
+          <div class="subscription-period">/month</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> 50 tons carbon credit/month</li>
+            <li><i class="fas fa-check"></i> API access</li>
+            <li><i class="fas fa-check"></i> Weekly report</li>
+            <li><i class="fas fa-check"></i> Priority support</li>
+            <li><i class="fas fa-check"></i> Dedicated advisor</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">Trader</div>
+          <div class="subscription-price">$120</div>
+          <div class="subscription-period">/month</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Unlimited trading</li>
+            <li><i class="fas fa-check"></i> Advanced analytics</li>
+            <li><i class="fas fa-check"></i> API access</li>
+            <li><i class="fas fa-check"></i> 24/7 support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="subscription-name">NGO</div>
+          <div class="subscription-price">$180</div>
+          <div class="subscription-period">/month</div>
+          <ul class="package-features">
+            <li><i class="fas fa-check"></i> Project management</li>
+            <li><i class="fas fa-check"></i> Certificate generation</li>
+            <li><i class="fas fa-check"></i> Donor reporting</li>
+            <li><i class="fas fa-check"></i> Dedicated support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Start</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Features -->
+  <section class="tech-features" id="tech-features">
+    <div class="container">
+      <div class="section-header">
+        <h2>API-First Architecture</h2>
+        <p>Powerful integration with modern technology infrastructure</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <i class="fas fa-code"></i>
+          <h3>RESTful API</h3>
+          <p>Fast integration with comprehensive and easy-to-use API documentation</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-plug"></i>
+          <h3>WebSocket</h3>
+          <p>Instant access to real-time market data</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>OAuth 2.0</h3>
+          <p>Secure authentication and authorization</p>
+        </div>
+
+        <div class="tech-card">
+          <i class="fas fa-database"></i>
+          <h3>Blockchain</h3>
+          <p>Transparent and traceable certificate storage</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="#" class="btn btn-primary">API Documentation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Ecosystem -->
+  <section class="partner-ecosystem" id="partners">
+    <div class="container">
+      <div class="section-header">
+        <h2>Partner Ecosystem</h2>
+        <p>Our trusted partners</p>
+      </div>
+
+      <div class="partner-grid">
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-hands-helping"></i></div>
+          <h4>NGOs</h4>
+          <p>85+ NGOs</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-bolt"></i></div>
+          <h4>Energy Companies</h4>
+          <p>40+ Partners</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-building"></i></div>
+          <h4>Corporate Clients</h4>
+          <p>500+ Companies</p>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-logo"><i class="fas fa-university"></i></div>
+          <h4>Research Institutions</h4>
+          <p>25+ Institutions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Compliance -->
+  <section class="trust-compliance" id="compliance">
+    <div class="container">
+      <div class="section-header">
+        <h2>Trust & Compliance</h2>
+        <p>Certifications compliant with international standards</p>
+      </div>
+
+      <div class="compliance-grid">
+        <div class="compliance-badge">
+          <i class="fas fa-certificate"></i>
+          <h4>ISO 14064</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-shield-alt"></i>
+          <h4>ISO 27001</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-check-circle"></i>
+          <h4>VCS</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-award"></i>
+          <h4>Gold Standard</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-lock"></i>
+          <h4>GDPR</h4>
+        </div>
+
+        <div class="compliance-badge">
+          <i class="fas fa-globe"></i>
+          <h4>Paris Agreement</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Resources -->
+  <section class="education-section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <h2>Education & Resources</h2>
+        <p>Learn about carbon market</p>
+      </div>
+
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-book"></i></div>
+          <div class="education-content">
+            <h3>What is Carbon Credit?</h3>
+            <p>Learn the fundamentals of carbon credit system</p>
+            <a href="#" class="read-more">Read <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-chart-bar"></i></div>
+          <div class="education-content">
+            <h3>How Does the Market Work?</h3>
+            <p>Understand carbon market mechanisms</p>
+            <a href="#" class="read-more">Read <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="education-card">
+          <div class="education-icon"><i class="fas fa-video"></i></div>
+          <div class="education-content">
+            <h3>Video Tutorials</h3>
+            <p>Watch our visual training series</p>
+            <a href="#" class="read-more">Watch <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>What you want to know</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            What is a carbon credit?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            A carbon credit is a tradable certificate representing the reduction or offset of 1 ton of CO₂ emissions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do I get a certificate?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            After calculating your carbon footprint, you can choose a suitable package, make payment, and receive your digital certificate instantly.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            What payment methods are accepted?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            You can pay with credit card, bank transfer, and cryptocurrency.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            How do I integrate the API?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            You can quickly integrate by reviewing our API documentation. Our enterprise support team is ready to help.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Team</h2>
+        <p class="team-subtitle">Shaping the carbon market with our experienced team</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="../images/avatar-placeholder.jpg" alt="Ercüment Erden">
+          </div>
+          <h3>Ercüment Erden</h3>
+          <p class="team-title">Founder & CEO</p>
+          <a href="https://www.linkedin.com/in/erc%C3%BCment-erden/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="../images/avatar-placeholder.jpg" alt="Fatih Malyemez">
+          </div>
+          <h3>Fatih Malyemez</h3>
+          <p class="team-title">CTO</p>
+          <a href="https://www.linkedin.com/in/fatih-malyemez-86b98a245/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="../images/avatar-placeholder.jpg" alt="Selim Güven">
+          </div>
+          <h3>Selim Güven</h3>
+          <p class="team-title">Business Development Director</p>
+          <a href="https://www.linkedin.com/in/selim-g%C3%BCven-a6b70717/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="../images/avatar-placeholder.jpg" alt="Hüseyin Yeğin">
+          </div>
+          <h3>Hüseyin Yeğin</h3>
+          <p class="team-title">Product Manager</p>
+          <a href="https://www.linkedin.com/in/h%C3%BCseyin-ye%C4%9Fin-2b4290219/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="../images/avatar-placeholder.jpg" alt="Ilgın Sözen">
+          </div>
+          <h3>Ilgın Sözen</h3>
+          <p class="team-title">Operations Manager</p>
+          <a href="https://www.linkedin.com/in/ilg%C4%B1n-s%C3%B6zen-8b2a5963/" target="_blank" rel="noopener" class="linkedin-btn">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>CarbonEcoMarket</h3>
+          <p>Building a sustainable future together in the global carbon marketplace.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#user-types">About Us</a></li>
+            <li><a href="#calculator">Carbon Calculator</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#team">Our Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">GDPR</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <ul>
+            <li><i class="fas fa-envelope"></i> info@carbonecomarket.com</li>
+            <li><i class="fas fa-phone"></i> +90 (212) 000 00 00</li>
+            <li><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Newsletter</h3>
+          <p>Get the latest news and updates</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 CarbonEcoMarket. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="../script.js"></script>
+</body>
+</html>
