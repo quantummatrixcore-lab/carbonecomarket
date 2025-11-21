@@ -28,8 +28,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Chart.js - DISABLED to prevent layout issues -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script> -->
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../styles.css">
@@ -177,22 +177,22 @@
 
         <form id="carbonCalculatorForm">
           <div class="form-group">
-            <label for="electricity">Monthly Electricity Consumption (kWh)</label>
+            <label for="electricity"><i class="fas fa-bolt"></i> Monthly Electricity Consumption (kWh)</label>
             <input type="number" id="electricity" placeholder="e.g., 300" required>
           </div>
 
           <div class="form-group">
-            <label for="gas">Monthly Gas Consumption (m³)</label>
+            <label for="gas"><i class="fas fa-fire"></i> Monthly Gas Consumption (m³)</label>
             <input type="number" id="gas" placeholder="e.g., 50" required>
           </div>
 
           <div class="form-group">
-            <label for="water">Monthly Water Consumption (m³)</label>
+            <label for="water"><i class="fas fa-tint"></i> Monthly Water Consumption (m³)</label>
             <input type="number" id="water" placeholder="e.g., 15" required>
           </div>
 
           <div class="form-group">
-            <label for="transport">Monthly Vehicle Usage (km)</label>
+            <label for="transport"><i class="fas fa-car"></i> Monthly Vehicle Usage (km)</label>
             <input type="number" id="transport" placeholder="e.g., 500" required>
           </div>
 
@@ -332,8 +332,11 @@
         </div>
       </div>
 
-      <div style="margin-top: 3rem;">
-        <canvas id="marketChart" style="height: 300px;"></canvas>
+      <!-- Chart removed - to prevent layout issues -->
+      <div style="margin-top: 2rem; text-align: center;">
+        <p style="color: rgba(255,255,255,0.7); font-style: italic;">
+          <i class="fas fa-chart-line"></i> Live chart coming soon
+        </p>
       </div>
 
       <div style="text-align: center; margin-top: 2rem;">
@@ -392,32 +395,32 @@
 
       <div class="news-grid">
         <div class="news-card">
-          <img src="../images/sustainability-1.jpg" alt="News 1" class="news-image">
+          <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80" alt="Turkey Climate Law" class="news-image">
           <div class="news-content">
-            <div class="news-date">November 5, 2025</div>
-            <h3>EU Carbon Prices Reach Record High</h3>
-            <p>European Union Emissions Trading System (ETS) prices approaching €100 per ton.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            <div class="news-date">July 9, 2025</div>
+            <h3>Turkey Passes Climate Law</h3>
+            <p>Parliament adopts Climate Law establishing legal foundation for net-zero emissions by 2053. Carbon Market Board to be established.</p>
+            <a href="https://carbonherald.com/turkey-set-to-launch-carbon-market-board-emissions-trading-system/" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="news-card">
-          <img src="../images/sustainability-2.jpg" alt="News 2" class="news-image">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Turkey ETS" class="news-image">
           <div class="news-content">
-            <div class="news-date">November 3, 2025</div>
-            <h3>Turkey's Carbon Market Rapidly Growing</h3>
-            <p>Carbon credit trading gaining momentum in Turkey with increasing investor interest.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            <div class="news-date">2025</div>
+            <h3>Turkey's Carbon Market Launches in 2026</h3>
+            <p>Turkish Emissions Trading System (TR ETS) pilot phase starts 2026-2027. Will cover power and industry sectors.</p>
+            <a href="https://icapcarbonaction.com/en/ets/turkish-emission-trading-system" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
 
         <div class="news-card">
-          <img src="../images/corporate.jpg" alt="News 3" class="news-image">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80" alt="EU CBAM" class="news-image">
           <div class="news-content">
-            <div class="news-date">November 1, 2025</div>
-            <h3>Companies Prepare for Sustainability Reporting</h3>
-            <p>New regulations making carbon footprint reporting mandatory for companies.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+            <div class="news-date">2026</div>
+            <h3>EU Carbon Border Tax Coming</h3>
+            <p>EU's Carbon Border Adjustment Mechanism (CBAM) enters definitive phase in 2026. Will directly impact Turkish exporters.</p>
+            <a href="https://www.goldstein-renewable.de/en/post/turkey-emissions-trading-system-and-cbam-the-future-of-turkey-carbon-market" target="_blank" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -438,7 +441,7 @@
 
       <div class="projects-grid">
         <div class="project-card">
-          <img src="../images/farmer.jpg" alt="Reforestation" class="project-image">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80" alt="Reforestation" class="project-image">
           <div class="project-content">
             <span class="project-badge">Reforestation</span>
             <h3>Anatolia Reforestation Project</h3>
@@ -450,7 +453,7 @@
         </div>
 
         <div class="project-card">
-          <img src="../images/energy.jpg" alt="Solar Energy" class="project-image">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80" alt="Solar Energy" class="project-image">
           <div class="project-content">
             <span class="project-badge">Renewable Energy</span>
             <h3>Solar Power Plant</h3>
@@ -462,7 +465,7 @@
         </div>
 
         <div class="project-card">
-          <img src="../images/ngo.jpg" alt="Wind Energy" class="project-image">
+          <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80" alt="Wind Energy" class="project-image">
           <div class="project-content">
             <span class="project-badge">Wind Energy</span>
             <h3>Aegean Wind Farm</h3>
@@ -810,7 +813,7 @@
       <div class="team-grid">
         <div class="team-card">
           <div class="team-photo">
-            <img src="../images/avatar-placeholder.jpg" alt="Ercüment Erden">
+            <img src="https://ui-avatars.com/api/?name=Ercument+Erden&background=0F6B63&color=fff&size=200&bold=true&font-size=0.4" alt="Ercüment Erden">
           </div>
           <h3>Ercüment Erden</h3>
           <p class="team-title">Founder & CEO</p>
@@ -821,7 +824,7 @@
 
         <div class="team-card">
           <div class="team-photo">
-            <img src="../images/avatar-placeholder.jpg" alt="Fatih Malyemez">
+            <img src="https://ui-avatars.com/api/?name=Fatih+Malyemez&background=10b981&color=fff&size=200&bold=true&font-size=0.4" alt="Fatih Malyemez">
           </div>
           <h3>Fatih Malyemez</h3>
           <p class="team-title">CTO</p>
@@ -832,21 +835,10 @@
 
         <div class="team-card">
           <div class="team-photo">
-            <img src="../images/avatar-placeholder.jpg" alt="Selim Güven">
-          </div>
-          <h3>Selim Güven</h3>
-          <p class="team-title">Business Development Director</p>
-          <a href="https://www.linkedin.com/in/selim-g%C3%BCven-a6b70717/" target="_blank" rel="noopener" class="linkedin-btn">
-            <i class="fab fa-linkedin"></i> LinkedIn
-          </a>
-        </div>
-
-        <div class="team-card">
-          <div class="team-photo">
-            <img src="../images/avatar-placeholder.jpg" alt="Hüseyin Yeğin">
+            <img src="https://ui-avatars.com/api/?name=Huseyin+Yegin&background=A6E22E&color=2F3E46&size=200&bold=true&font-size=0.4" alt="Hüseyin Yeğin">
           </div>
           <h3>Hüseyin Yeğin</h3>
-          <p class="team-title">Product Manager</p>
+          <p class="team-title">Advisor</p>
           <a href="https://www.linkedin.com/in/h%C3%BCseyin-ye%C4%9Fin-2b4290219/" target="_blank" rel="noopener" class="linkedin-btn">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
@@ -854,10 +846,10 @@
 
         <div class="team-card">
           <div class="team-photo">
-            <img src="../images/avatar-placeholder.jpg" alt="Ilgın Sözen">
+            <img src="https://ui-avatars.com/api/?name=Ilgin+Sozen&background=f59e0b&color=fff&size=200&bold=true&font-size=0.4" alt="Ilgın Sözen">
           </div>
           <h3>Ilgın Sözen</h3>
-          <p class="team-title">Operations Manager</p>
+          <p class="team-title">Advisor</p>
           <a href="https://www.linkedin.com/in/ilg%C4%B1n-s%C3%B6zen-8b2a5963/" target="_blank" rel="noopener" class="linkedin-btn">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
